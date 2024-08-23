@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: mini-project
+
+#  security:
+#    user:
+#      name: vichhai
+#      password: 123
+  #Postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mini_project_db
+    username: postgres
+    password: 2003
+  #JPA
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    properties:
+      hibernate:
+        format_sql: true
