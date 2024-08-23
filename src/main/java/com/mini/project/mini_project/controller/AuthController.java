@@ -1,6 +1,7 @@
 package com.mini.project.mini_project.controller;
 
 import com.mini.project.mini_project.dto.authentication.authRequest.AuthRequest;
+import com.mini.project.mini_project.dto.authentication.authRequest.DTORegisterResponse;
 import com.mini.project.mini_project.dto.authentication.authRequest.UserRegistrationRequest;
 import com.mini.project.mini_project.dto.authentication.authResponse.AuthResponse;
 import com.mini.project.mini_project.entity.Users;
@@ -26,7 +27,6 @@ public class AuthController {
     private final BCryptPasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
-
 
     public AuthController(UserService userService, BCryptPasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtService jwtService) {
         this.userService = userService;
@@ -62,9 +62,8 @@ public class AuthController {
         return ResponseEntity.ok(authResponse);
     }
     @PostMapping("/register")
-    public ResponseEntity<Users> registerUser(@RequestBody UserRegistrationRequest registrationRequest) {
-        Users registeredUser = userService.registerUser(registrationRequest);
-        return ResponseEntity.ok(registeredUser);
+    public ResponseEntity<DTORegisterResponse> registerUser(@RequestBody UserRegistrationRequest registrationRequest) throws Exception {
+            return ResponseEntity.ok(userService.registerUser(registrationRequest));
     }
 
 
